@@ -7,9 +7,7 @@
         left: -1000000px;
     }
     </style>
-    <button id="share-btn">
-        <slot></slot>
-    </button>
+    <slot></slot>
     <input type="text" id="share-text" />
     `
 
@@ -22,9 +20,7 @@
         connectedCallback() {
             this.shadowRoot.appendChild(template.content.cloneNode(true));
             
-            let buttonDOM = this.shadowRoot.querySelector("#share-btn");
-
-            buttonDOM.addEventListener("click", () => {
+            this.addEventListener("click", () => {
                 this.triggerShare();
             }, true);
         }
@@ -39,7 +35,11 @@
             } 
             */
             if (window.navigator.share) {
-                this._share({});
+                this._share({
+                    title: "Prova web share api",
+                    text: "Questa è solo una prova del web share API",
+                    url: "https://andreadev-it.github.io/share-button-custom-element/"
+                });
             }
             else if (window.navigator.clipboard) {
                 this._clipboardAPI("Con clipboard API");
