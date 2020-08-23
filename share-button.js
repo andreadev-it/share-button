@@ -55,7 +55,8 @@
                 alert("Condiviso con successo!");
             }
             catch(error) {
-                alert("Errore!");
+                if (error.name === "AbortError") alert("Hai cancellato lo share");
+                else alert("Errore!");
                 console.error("Errore durante la condivisione ", error);
             }
         }
