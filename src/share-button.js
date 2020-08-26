@@ -78,37 +78,37 @@ class ShareButton extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
         
         this.addEventListener("click", function (e) {
-            this.triggerShare({
-                title: this.title,
-                text: this.text,
-                url: this.url,
-                fallbackText: this.fallbackText
+
+            let event = new CustomEvent("share", {
+                detail: {
+                    title: data.title,
+                    text: data.text,
+                    url: data.url,
+                    files: data.files,
+                    fallbackText: data.fallbackText,
+                },
+                cancelable: true
             });
+    
+            let continueShare = this.dispatchEvent(event);
+    
+            if (continueShare) {
+                this.triggerShare({
+                    title: this.title,
+                    text: this.text,
+                    url: this.url,
+                    fallbackText: this.fallbackText
+                });
+            }
         }, true);
     }
 
     triggerShare(data) {
-
-        let event = new CustomEvent("share", {
-            detail: {
-                title: data.title,
-                text: data.text,
-                url: data.url,
-                files: data.files,
-                fallbackText: data.fallbackText,
-            },
-            cancelable: true
-        });
-
-        let continueShare = this.dispatchEvent(event);
-
-        if (continueShare) {
-            if (window.navigator.share) {
-                this._share(data);
-            }
-            else if (window.navigator.clipboard) {
-                this._clipboardAPI(data.fallbackText || data.text);
-            }
+        if (window.navigator.share) {
+            this._share(data);
+        }
+        else if (window.navigator.clipboard) {
+            this._clipboardAPI(data.fallbackText || data.text);
         }
     }
 

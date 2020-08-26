@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share-button examples</title>
+    <script type="module" src="../src/share-button.js"></script>
+</head>
+<body>
+    <h2>Simple share button example</h2>
+    <share-button
+        title="Share example"
+        text="This is the shared message."
+        url="https://github.com/andreadev-it/share-button-custom-element"
+        fallbacktext="Check out the code at: https://github.com/andreadev-it/share-button-custom-element"
+    >
+        Share!
+    </share-button>
+
+    <h2>Quiet share button</h2>
+    <p>This button won't trigger an alert when clicked on desktop.</p>
+    <share-button
+        text="Sneaked in your clipboard!! >:)"
+    >
+        Share (quiet)
+    </share-button>
+</body>
+</html>

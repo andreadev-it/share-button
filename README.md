@@ -45,7 +45,7 @@ Usage within HTML:
 
 | Name            | Description |
 | --------------- | ----------- |
-| `triggerShare`  | This method allows you to trigger a share action, as if the user clicked on the share button. It also allows you to share files. |
+| `triggerShare`  | This method allows you to trigger a share action, as if the user clicked on the share button. It also allows you to share files. When used, no `share` event will be generated. |
 
 
 ## Useful tips

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File sharing example</title>
+</head>
+<body>
+    <script>
+        window.addEventListener("load", () => {
+            let shareBtn = document.getElementById("my-share-button");
+
+            shareBtn.addEventListener("share", (e) => {
+                // Prevent the default share action (without files)
+                e.preventDefault();
+
+                // Get the files
+                let files = document.getElementById("my-file-picker").files;
+
+                if (!files || files.length == 0) {
+                    alert("You need to select a file!");
+                }
+                else {
+                    // Manually trigger a share action
+                    shareBtn.triggerShare({
+                        title: "Test File Sharing",
+                        text: "This will share some files along with these informations.",
+                        files: files
+                    });
+                }
+            });
+        });
+    </script>
+
+    <h1>Select a file and hit the "Share" button!</h1>
+    <h2 style="color: red">WORKS ONLY ON MOBILE BROWSERS</h2>
+    <input type="file" id="my-file-picker" />
+    <share-button id="my-share-button">Share!</share-button>
+</body>
+</html>
