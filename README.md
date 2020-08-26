@@ -1,7 +1,7 @@
 # share-button-custom-element
 
 ## Description
-This is a custom elements that allows you to share informations using the
+This is a custom element that allows you to share informations using the
 native share dialog on mobile. On desktop, it fallbacks to copying the text
 to the clipboard.
 
@@ -82,7 +82,7 @@ The Web Share API is available **only on mobile browsers**. Also, the page must 
 
 Only one thing to point out, in that article it says that on Android it is available
 only on Chromium forks, but that's not true anymore, since it is available in the newer
-version of Firefox.
+version of Firefox, even though as of 26 August 2020 it looks like it can only share the url.
 
 ### Implementing custom share logic
 
