@@ -61,6 +61,14 @@ class ShareButton extends HTMLElement {
         this.setAttribute("fallbacktext", val)
     }
 
+    get quiet() {
+        return this.hasAttribute("quiet");
+    }
+
+    set quiet(val) {
+        this.toggleAttribute("quiet", val);
+    }
+
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
@@ -164,7 +172,7 @@ class ShareButton extends HTMLElement {
 
             let continueTask = this.dispatchEvent(event);
 
-            if (continueTask) {
+            if (continueTask && !this.quiet) {
                 alert("The text has been copied to your clipboard.");
             }
         }
