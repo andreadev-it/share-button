@@ -115,6 +115,12 @@ class ShareButton extends HTMLElement {
 
     async _share(data) {
         try {
+
+            if (data.files != null && data.files.length > 0) {
+                if (!navigator.canShare || !navigator.canShare({files: data.files}))
+                    throw "Error while sharing these files. Sharing files is not available or it cannot share this file type.";
+            }
+
             await navigator.share(data);
 
             let event = new CustomEvent("sharesuccess", {

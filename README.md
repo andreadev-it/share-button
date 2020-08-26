@@ -31,6 +31,7 @@ Usage within HTML:
 | `text`         | This is the text that will be shared. If no fallback text has been set, it's the text that will also be copied to your clipboard when the Web Share API is not available.
 | `url`          | The URL that you want to share.
 | `fallbacktext` | The text that will be copied to the clipboard if the Web Share API is not available. You may want to insert here a short text that includes the URL that you want to share. If this is not present, the `text` attribute is copied instead.
+| `quiet`        | Prevent the message pop-up after copying some text into the clipboard. |
 
 ## Events
 
@@ -82,7 +83,7 @@ The Web Share API is available **only on mobile browsers**. Also, the page must 
 
 Only one thing to point out, in that article it says that on Android it is available
 only on Chromium forks, but that's not true anymore, since it is available in the newer
-version of Firefox, even though as of 26 August 2020 it looks like it can only share the url.
+version of Firefox, even though as of August, 26, 2020 it looks like it can only share the url.
 
 ### Implementing custom share logic
 
@@ -108,6 +109,8 @@ shareBtn.addEventListener("share", (event) => {
 When triggering a share action programmatically, you must **always be sure that it was
 triggered by a user interaction**. Many browsers will stop you from using the Web Share
 or Clipboard API if the code wasn't triggered by some user action.
+
+Also, it doesn't work if the code execution has been blocked by a debugging tool.
 
 ### How to share files
 
