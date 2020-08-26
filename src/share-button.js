@@ -79,13 +79,19 @@ class ShareButton extends HTMLElement {
         
         this.addEventListener("click", function (e) {
 
+            let data = {
+                title: this.title,
+                text: this.text,
+                url: this.url,
+                fallbackText: this.fallbackText
+            }
+
             let event = new CustomEvent("share", {
                 detail: {
                     title: data.title,
                     text: data.text,
                     url: data.url,
-                    files: data.files,
-                    fallbackText: data.fallbackText,
+                    fallbackText: data.fallbackText
                 },
                 cancelable: true
             });
@@ -93,12 +99,7 @@ class ShareButton extends HTMLElement {
             let continueShare = this.dispatchEvent(event);
     
             if (continueShare) {
-                this.triggerShare({
-                    title: this.title,
-                    text: this.text,
-                    url: this.url,
-                    fallbackText: this.fallbackText
-                });
+                this.triggerShare(data);
             }
         }, true);
     }
