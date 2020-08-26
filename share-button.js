@@ -101,9 +101,6 @@ class ShareButton extends HTMLElement {
             else if (window.navigator.clipboard) {
                 this._clipboardAPI(data.fallbackText || data.text);
             }
-            else if (document.execCommand) {
-                this._execCommand(data.fallbackText || data.text);
-            }
         }
     }
 
@@ -165,7 +162,11 @@ class ShareButton extends HTMLElement {
                 }
             });
 
-            this.dispatchEvent(event);
+            let continueTask = this.dispatchEvent(event);
+
+            if (continueTask) {
+                alert("The text has been copied to your clipboard.");
+            }
         }
         catch(error) {
             let event = new CustomEvent("sharefailed", {
@@ -178,36 +179,6 @@ class ShareButton extends HTMLElement {
             this.dispatchEvent(event);
 
             throw "Error while trying to copy to clipboard. Was this event triggered by a user interaction?";
-        }
-    }
-
-    _execCommand(text) {
-        let textDOM = this.shadowRoot.getElementById("share-text");
-        textDOM.value = text;
-
-        try {
-            textDOM.select();
-            textDOM.setSelectionRange(0,999999);
-            document.execCommand("copy");
-
-            let event = new CustomEvent("sharesuccess", {
-                detail: {
-                    method: "clipboard-legacy",
-                    text: text
-                }
-            });
-            this.dispatchEvent(event);
-        }
-        catch(error) {
-            let event = new CustomEvent("sharefailed", {
-                detail: {
-                    method: "clipboard-legacy",
-                    text: text
-                }
-            });
-            this.dispatchEvent(event);
-
-            throw "Error while trying to copy using 'document.execCommand(`copy`). Check the documentation relative to the browser in use.'";
         }
     }
 }
