@@ -1,0 +1,22 @@
+{
+  "name": "share-button",
+  "version": "1.0.0",
+  "description": "A custom HTML element that allows you to easily implement the Web Share API, with desktop fallback.",
+  "main": "src/share-button.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreadev-it/share-button.git"
+  },
+  "author": "andreadev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andreadev-it/share-button/issues"
+  },
+  "homepage": "https://github.com/andreadev-it/share-button#readme"
+}

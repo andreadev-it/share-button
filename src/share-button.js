@@ -199,3 +199,5 @@ class ShareButton extends HTMLElement {
 }
 
 window.customElements.define("share-button", ShareButton);
+
+export default ShareButton;
