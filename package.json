@@ -1,5 +1,5 @@
 {
-  "name": "share-button",
+  "name": "@andreadev/share-button",
   "version": "1.0.0",
   "description": "A custom HTML element that allows you to easily implement the Web Share API, with desktop fallback.",
   "main": "src/share-button.js",
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/andreadev-it/share-button.git"
   },
-  "author": "andreadev",
+  "author": "Andrea Dragotta <dev@andreadev.it> (https://andreadev.it)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/andreadev-it/share-button/issues"
