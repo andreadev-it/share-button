@@ -1,4 +1,4 @@
-# share-button-custom-element
+# share-button
 
 ## Description
 This is a custom element that allows you to share informations using the
