@@ -1,5 +1,9 @@
 # share-button
 
+[![npm (scoped)](https://img.shields.io/npm/v/@andreadev/share-button)](https://www.npmjs.com/package/@andreadev/share-button)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@andreadev/share-button)
+
+
 ## Description
 This is a custom element that allows you to share informations using the
 native share dialog on mobile. On desktop, it fallbacks to copying the text
