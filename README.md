@@ -6,9 +6,22 @@ native share dialog on mobile. On desktop, it fallbacks to copying the text
 to the clipboard.
 
 ## Installation
-Download the `share-button.js` file and import it in your HTML like this:
+Add the following script tag to your head:
 ```
-<script type="module" src="share-button.js"></script>
+<script type="module" src="https://unpkg.com/@andreadev/share-button@1.0.0/src/share-button.js"></script>
+```
+
+If you want you can also install it from npm:
+```
+npm install --save @andreadev/share-button
+```
+
+And then use it like this (if you have a bundler, otherwise it could give you a "failed to resolve module" error):
+```
+import ShareButton from "@andreadev/share-button"
+
+let shareBtn = new ShareButton();
+...
 ```
 
 ## Usage
@@ -47,6 +60,18 @@ Usage within HTML:
 | Name            | Description |
 | --------------- | ----------- |
 | `triggerShare`  | This method allows you to trigger a share action, as if the user clicked on the share button. It also allows you to share files. When used, no `share` event will be generated. |
+
+
+### triggerShare
+The *triggerShare* function accept only one argument, which is an object representing the options. The options available are:
+
+| Name      | Description   |
+| --------- | -----------   |
+| `title` | The share title (to be used with the WebShare API) |
+| `text`  | The text to be shared (it will be used with both the WebShare and the Clipboard API) |
+| `url`   | Url to be shared (WebShare API) |
+| `fallbacktext` | A fallback text to be used in the Clipboard API (the **text** property will be used if this is undefined) |
+| `files` | The files to be shared (WebShare API). The value should be a FileList object (the one returned from the `type='file'` input).
 
 
 ## Useful tips
