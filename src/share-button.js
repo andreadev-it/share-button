@@ -17,14 +17,8 @@ template.innerHTML = `
 :host(:active) {
     background-color: #ccc;
 }
-
-#share-text {
-    position: absolute;
-    left: -1000000px;
-}
 </style>
 <slot></slot>
-<input type="text" id="share-text" />
 `
 
 class ShareButton extends HTMLElement {
