@@ -171,12 +171,13 @@ class ShareButton extends HTMLElement {
                 detail: {
                     method: "clipboard-api",
                     text: text
-                }
+                },
+                cancelable: true
             });
 
             let continueTask = this.dispatchEvent(event);
 
-            if (continueTask && !this.quiet) {
+            if (continueTask && !this.quiet && !event.defaultPrevented) {
                 alert("The text has been copied to your clipboard.");
             }
         }
@@ -216,12 +217,13 @@ class ShareButton extends HTMLElement {
                     detail: {
                         method: "legacy",
                         text: text
-                    }
+                    },
+                    cancelable: true
                 });
     
                 let continueTask = this.dispatchEvent(event);
     
-                if (continueTask && !this.quiet) {
+                if (continueTask && !this.quiet && !event.defaultPrevented) {
                     alert("The text has been copied to your clipboard.");
                 }
             }
