@@ -1,6 +1,6 @@
 {
   "name": "@andreadev/share-button",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A custom HTML element that allows you to easily implement the Web Share API, with desktop fallback.",
   "main": "src/share-button.js",
   "directories": {

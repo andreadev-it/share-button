@@ -14,7 +14,7 @@ To copy the text to the clipboard, the Clipboard API is used when available, oth
 ## Installation
 Add the following script tag to your head:
 ```
-<script type="module" src="https://unpkg.com/@andreadev/share-button@1.0.4/src/share-button.js"></script>
+<script type="module" src="https://unpkg.com/@andreadev/share-button/src/share-button.js"></script>
 ```
 
 If you want you can also install it from npm:
