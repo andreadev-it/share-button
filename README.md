@@ -9,6 +9,8 @@ This is a custom element that allows you to share informations using the
 native share dialog on mobile. On desktop, it fallbacks to copying the text
 to the clipboard.
 
+To copy the text to the clipboard, the Clipboard API is used when available, otherwise it uses the legacy "execCommand" method. When the event is fired, the `detail.method` attribute will show the API used.
+
 ## Installation
 Add the following script tag to your head:
 ```
@@ -98,7 +100,8 @@ shareBtn.addEventListener("sharesuccess", (event) => {
 
     event.preventDefault(); // will remove the message
 
-    if (event.detail.method === "clipboard-api") {
+    if (event.detail.method === "clipboard-api" ||
+        event.detail.method === "legacy") {
         // Implement your own logic to warn the user
     }
 });

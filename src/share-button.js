@@ -105,6 +105,9 @@ class ShareButton extends HTMLElement {
         else if (window.navigator.clipboard) {
             this._clipboardAPI(data.fallbackText || data.text);
         }
+        else {
+            this.legacyFallback(data.fallbackText || data.text);
+        }
     }
 
     async _share(data) {
@@ -187,6 +190,64 @@ class ShareButton extends HTMLElement {
 
             this.dispatchEvent(event);
 
+            throw "Error while trying to copy to clipboard. Was this event triggered by a user interaction?";
+        }
+    }
+
+    legacyFallback(text) {
+        let textArea = document.createElement("textarea");
+        textArea.value = text;
+
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        try {
+            var successful = document.execCommand('copy');
+
+            document.body.removeChild(textArea);
+            
+            if (successful) {
+                let event = new CustomEvent("sharesuccess", {
+                    detail: {
+                        method: "legacy",
+                        text: text
+                    }
+                });
+    
+                let continueTask = this.dispatchEvent(event);
+    
+                if (continueTask && !this.quiet) {
+                    alert("The text has been copied to your clipboard.");
+                }
+            }
+            else {
+                let event = new CustomEvent("sharefailed", {
+                    detail: {
+                        method: "legacy",
+                        text: text
+                    }
+                });
+    
+                this.dispatchEvent(event);
+    
+                throw "Error while trying to copy to clipboard. Was this event triggered by a user interaction?";
+            }
+        }
+        catch (err) {
+            let event = new CustomEvent("sharefailed", {
+                detail: {
+                    method: "legacy",
+                    text: text
+                }
+            });
+
+            this.dispatchEvent(event);
+            
             throw "Error while trying to copy to clipboard. Was this event triggered by a user interaction?";
         }
     }
